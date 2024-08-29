@@ -6,6 +6,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { ProtectedRoute } from 'protected-route-react';
 import Home from './Components/Home';
 import Login from './Components/Login';
+import Registration from './Components/Registration';
 
 function App() {
   const { isAuthenticated, error } = useSelector(state => state.user);
@@ -36,6 +37,14 @@ function App() {
             redirect="/login"
           >
             <Home />
+          </ProtectedRoute>} />
+
+        <Route exact path="/registration" element={
+          <ProtectedRoute
+            isAuthenticated={isAuthenticated}
+            redirect="/login"
+          >
+            <Registration />
           </ProtectedRoute>} />
 
       </Routes>
