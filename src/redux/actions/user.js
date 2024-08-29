@@ -1,16 +1,17 @@
 import { server } from '../store'
 import axios from 'axios'
 
-export const register = (firstName, lastName, email, password, file) => async (dispatch) => {
+export const register = (formData) => async (dispatch) => {
     try {
         dispatch({ type: 'registerRequest' });
 
-        const { data } = await axios.post(`${server}/register`, { firstName, lastName, email, password, file }, {
+        const { data } = await axios.post(`${server}/register`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             }
         });
 
+        console.log({ data });
         dispatch({ type: 'registerSuccess', payload: data });
     }
     catch (error) {
@@ -28,6 +29,7 @@ export const login = (email, password) => async (dispatch) => {
             },
             withCredentials: true,
         });
+        console.log({ data });
         dispatch({ type: 'loginSuccess', payload: data });
     }
     catch (error) {
