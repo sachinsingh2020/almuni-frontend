@@ -1,11 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { login } from '../redux/actions/user';
+import toast from 'react-hot-toast';
 
 const Login = () => {
-    const [isRegister, setIsRegister] = useState(false);
 
-    const toggleAuthMode = () => {
-        setIsRegister(!isRegister);
-    };
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const dispatch = useDispatch();
+
+    const { message, error, loading } = useSelector(state => state.user);
+
+    const hangleLogin = async (e) => {
+        e.preventDefault();
+        await dispatch(login(email, password));
+    }
+
+    useEffect(() => {
+        if (error) {
+            toast.error(error);
+            dispatch({ type: 'clearError' });
+        }
+        if (message) {
+            toast.success(message);
+            dispatch({ type: 'clearMessage' });
+        }
+    }, [dispatch, error, message])
+
 
     return (
         <div className="flex justify-center items-center h-screen bg-gray-100 rounded-lg">
@@ -24,15 +47,17 @@ const Login = () => {
                 {/* Right Section */}
                 <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
                     <h2 className="text-3xl font-bold text-gray-700">
-                        {isRegister ? 'Hello New User!' : 'Hello Student!'}
+                        'Hello Student!'
                     </h2>
                     <p className="mt-2 text-gray-500">
-                        {isRegister ? 'Sign up to get started' : 'Welcome Back'}
+                        Welcome Back
                     </p>
 
                     <form className="mt-8 space-y-4">
                         <div>
                             <input
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 type="email"
                                 className="mt-2 w-full p-2 border border-gray-300 rounded-full pl-4"
                                 required
@@ -42,56 +67,37 @@ const Login = () => {
 
                         <div>
                             <input
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 type="password"
                                 className="mt-2 w-full p-2 border border-gray-300 rounded-full pl-4"
                                 required
                                 placeholder='Password'
                             />
                         </div>
-                        {isRegister && (
-                            <div>
-                                <input
-                                    type="password"
-                                    className="mt-2 w-full p-2 border border-gray-300 rounded-full pl-4"
-                                    required
-                                    placeholder='Confirm Password'
-                                />
-                            </div>
-                        )}
-                        
-                        <p className='text-gray-400'>Or login with</p>
 
-                        {!isRegister && (
-                            
-                        <div className="mt-6 flex justify-center space-x-4">
-                            <button className="flex items-center justify-center p-2 bg-gray-200 rounded-full hover:bg-gray-300">
-                                <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" className="w-6 h-6" />
-                            </button>
-                            <button className="flex items-center justify-center p-2 bg-gray-200 rounded-full hover:bg-gray-300">
-                                <img src="https://img.icons8.com/?size=100&id=PvvcWRWxRKSR&format=png&color=000000" alt="Meta" className="w-6 h-6" />
-                            </button>
-                            <button className="flex items-center justify-center p-2 bg-gray-200 rounded-full hover:bg-gray-300">
-                                <img src="https://img.icons8.com/ios-filled/50/000000/mac-os.png" alt="Apple" className="w-6 h-6" />
-                            </button>
-                        </div>
-                    )}
+
 
                         <button
+                            onClick={hangleLogin}
                             type="submit"
                             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
                         >
-                            {isRegister ? 'Register' : 'Login'}
+                            Login
                         </button>
                     </form>
 
                     <div className="mt-4 text-center">
-                        <button className="text-blue-600 hover:underline" onClick={toggleAuthMode}>
-                            {isRegister ? 'Already have an account? Login' : 'New User? Register'}
-                        </button>
+                        <Link to="/registration" >
+                            <button className="text-blue-600 hover:underline" >
+                                New User? Register
+                            </button>
+                        </Link>
+
                         <span className='text-gray-400'> / Forgot Password</span>
                     </div>
 
-                    
+
                 </div>
             </div>
         </div>
