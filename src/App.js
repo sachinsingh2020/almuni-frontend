@@ -41,11 +41,15 @@ function App() {
 
         <Route exact path="/registration" element={
           <ProtectedRoute
-            isAuthenticated={isAuthenticated}
+            isAuthenticated={!isAuthenticated}
             redirect="/login"
           >
             <Registration />
           </ProtectedRoute>} />
+
+        {/* <Route exact path="/login" element={<Login />} />
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/registration" element={<Registration />} /> */}
 
       </Routes>
       <Toaster />
