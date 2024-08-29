@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Ashish></Ashish> singh
+          sachin singh great singh
         </a>
       </header>
     </div>
