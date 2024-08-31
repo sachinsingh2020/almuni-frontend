@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { login } from '../redux/actions/user';
 import toast from 'react-hot-toast';
 
-const Login = () => {
+const StudentLogin = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -83,12 +83,12 @@ const Login = () => {
                             type="submit"
                             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
                         >
-                            Login
+                            StudentLogin
                         </button>
                     </form>
 
                     <div className="mt-4 text-center">
-                        <Link to="/registration" >
+                        <Link to="/student-registration" >
                             <button className="text-blue-600 hover:underline" >
                                 New User? Register
                             </button>
@@ -104,4 +104,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default StudentLogin;
