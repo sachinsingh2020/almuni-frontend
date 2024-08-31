@@ -5,8 +5,9 @@ import { useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { ProtectedRoute } from 'protected-route-react';
 import Home from './Components/Home';
-import Login from './Components/Login';
-import Registration from './Components/Registration';
+import FrontPage from './Components/FrontPage';
+import StudentLogin from './Components/StudentLogin';
+import StudentRegistration from './Components/StudentRegistration';
 
 function App() {
   const { isAuthenticated, error } = useSelector(state => state.user);
@@ -23,15 +24,17 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/login" element={
+        <Route exact path="/student-login" element={
           <ProtectedRoute
             isAuthenticated={!isAuthenticated}
-            redirect="/"
+            redirect="/home"
           >
-            <Login />
+            <StudentLogin />
           </ProtectedRoute>} />
 
-        <Route exact path="/" element={
+        <Route exact path="/" element={<FrontPage />} />
+
+        <Route exact path="/home" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
             redirect="/login"
@@ -39,17 +42,14 @@ function App() {
             <Home />
           </ProtectedRoute>} />
 
-        <Route exact path="/registration" element={
+        <Route exact path="/student-registration" element={
           <ProtectedRoute
             isAuthenticated={!isAuthenticated}
             redirect="/login"
           >
-            <Registration />
+            <StudentRegistration />
           </ProtectedRoute>} />
 
-        {/* <Route exact path="/login" element={<Login />} />
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/registration" element={<Registration />} /> */}
 
       </Routes>
       <Toaster />

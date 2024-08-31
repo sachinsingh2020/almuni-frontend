@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../redux/actions/user';
 import toast from 'react-hot-toast';
 
-function Registration() {
+function StudentRegistration() {
   const dispatch = useDispatch();
   const { loading, error, message } = useSelector((state) => state.user);
 
@@ -69,7 +69,7 @@ function Registration() {
       }}
     >
       <div className="w-full flex flex-col justify-center items-center">
-        <h1 className="text-white text-center text-4xl font-bold mb-2">Alumni Connect Registration</h1>
+        <h1 className="text-white text-center text-4xl font-bold mb-2">Alumni Connect StudentRegistration</h1>
         <h4 className="text-white text-center text-lg mb-4">
           Please fill in all the details accurately to connect with your alumni and seniors
         </h4>
@@ -246,4 +246,4 @@ function Registration() {
   );
 }
 
-export default Registration;
+export default StudentRegistration;
