@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AlumniSampleImage1 from "../assets/AlumniSampleImage1.png";
 import AlumniSampleImage2 from "../assets/AlumniSampleImage2.png";
 import AlumniSampleImage3 from "../assets/AlumniSampleImage3.png";
@@ -8,8 +8,32 @@ import AlumniSampleImage6 from "../assets/AlumniSampleImage6.png";
 import Circle1 from "../assets/circle1.png";
 import Circle2 from "../assets/circle2.png";
 import Circle3 from "../assets/circle3.png";
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../redux/actions/user';
+import toast from 'react-hot-toast';
 
 const StudentHomePage = () => {
+
+
+    const dispatch = useDispatch();
+
+    const logoutHandler = () => {
+        dispatch(logout());
+    }
+
+    const { error, message } = useSelector(state => state.user);
+
+    useEffect(() => {
+        if (error) {
+            toast.error(error);
+            dispatch({ type: 'clearError' });
+        }
+        if (message) {
+            toast.success(message);
+            dispatch({ type: 'clearMessage' });
+        }
+    }, [dispatch, error, message])
+
     return (
         <div className="min-h-screen bg-gradient-to-r from-blue-500 to-blue-700 text-white">
             <nav className="flex justify-between items-center px-8 py-4 h-[4rem]">
@@ -20,6 +44,7 @@ const StudentHomePage = () => {
                     <button className="hover:text-gray-200 text-lg">Profile</button>
                 </div>
                 <button
+                    onClick={logoutHandler}
                     className="bg-yellow-400 text-black px-4 py-2 font-semibold"
                     style={{
                         borderTopLeftRadius: '20px',

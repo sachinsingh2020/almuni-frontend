@@ -30,6 +30,7 @@ export const login = (email, password) => async (dispatch) => {
             withCredentials: true,
         });
         console.log({ data });
+        localStorage.setItem('isAuthenticated', true);
         dispatch({ type: 'loginSuccess', payload: data });
     }
     catch (error) {
@@ -44,6 +45,7 @@ export const logout = () => async dispatch => {
         const { data } = await axios.get(`${server}/logout`, {
             withCredentials: true,
         });
+        localStorage.removeItem('isAuthenticated');
         dispatch({ type: 'logoutSuccess', payload: data });
     } catch (error) {
         dispatch({ type: 'logoutFail', payload: error.response.data.message });
@@ -63,19 +65,16 @@ export const isUserLoggedIn = () => async dispatch => {
     }
 }
 
-export const movieRequest = (formData) => async (dispatch) => {
+export const loadUser = () => async dispatch => {
     try {
-        dispatch({ type: 'movieRequestRequest' });
+        dispatch({ type: 'loadUserRequest' });
 
-        const { data } = await axios.post(`${server}/contactus`, formData, {
-            headers: {
-                'Content-Type': 'application/json',
-            },
+        const { data } = await axios.get(`${server}/getme`, {
             withCredentials: true,
-        })
-        dispatch({ type: 'movieRequestSuccess', payload: data });
+        });
+        dispatch({ type: 'loadUserSuccess', payload: data.user });
     }
     catch (error) {
-        dispatch({ type: 'movieRequestFail', payload: error.response.data.message });
+        dispatch({ type: 'loadUserFail', payload: error.response.data.message });
     }
 }
