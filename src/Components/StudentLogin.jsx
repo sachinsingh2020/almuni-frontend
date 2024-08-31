@@ -32,30 +32,30 @@ const StudentLogin = () => {
 
     return (
         <div className="flex justify-center items-center h-screen bg-gray-100 rounded-lg">
-            <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden w-full h-full"
+            <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden w-full h-full "
             >
                 {/* Left Section */}
-                <div className="bg-gradient-to-b from-blue-600 to-blue-800 w-full md:w-1/2  text-white flex flex-col justify-center items-center"
+                <div className="bg-gradient-to-b from-blue-600 to-blue-800 w-full md:w-1/2  text-white flex flex-col justify-center items-center h-2/6 md:h-full"
                 >
-                    <h2 className="text-4xl font-bold ">Alumni Connect</h2>
-                    <p className="mt-4 text-lg pl-2">
+                    <h2 className="text-2xl md:text-4xl font-bold ">Alumni Connect</h2>
+                    <p className="mt-2 md:mt-4 text-sm md:text-lg pl-2">
                         One stop platform to connect with alumni's
                     </p>
-                    <button className="mt-4 w-36 ml-6 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full">
+                    <button className="mt-4 w-30 md:w-36 ml-6 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full">
                         Read More
                     </button>
                 </div>
 
                 {/* Right Section */}
-                <div className="w-full md:w-1/2 p-8 flex flex-col justify-center items-center">
-                    <h2 className="text-4xl font-bold text-gray-700">
+                <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-center items-center h-4/6 md:h-full">
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-700">
                         Hello Student!
                     </h2>
                     <p className="mt-2  text-gray-400 font-bold text-2xl">
                         Welcome Back
                     </p>
 
-                    <form className="mt-8 space-y-4 w-full flex flex-col items-center justify-center">
+                    <form className="mt-4 md:mt-8 space-y-4 w-full flex flex-col items-center justify-center">
                         <div
                             className='w-full flex flex-col items-center justify-center'
                         >
