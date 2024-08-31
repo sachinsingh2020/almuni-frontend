@@ -32,10 +32,12 @@ const StudentLogin = () => {
 
     return (
         <div className="flex justify-center items-center h-screen bg-gray-100 rounded-lg">
-            <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden max-w-4xl w-full">
+            <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden w-full h-full"
+            >
                 {/* Left Section */}
-                <div className="bg-gradient-to-b from-blue-600 to-blue-800 w-full md:w-1/2 p-8 text-white flex flex-col justify-center">
-                    <h2 className="text-4xl font-bold pr-16">Alumni Connect</h2>
+                <div className="bg-gradient-to-b from-blue-600 to-blue-800 w-full md:w-1/2  text-white flex flex-col justify-center items-center"
+                >
+                    <h2 className="text-4xl font-bold ">Alumni Connect</h2>
                     <p className="mt-4 text-lg pl-2">
                         One stop platform to connect with alumni's
                     </p>
@@ -45,32 +47,36 @@ const StudentLogin = () => {
                 </div>
 
                 {/* Right Section */}
-                <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
-                    <h2 className="text-3xl font-bold text-gray-700">
-                        'Hello Student!'
+                <div className="w-full md:w-1/2 p-8 flex flex-col justify-center items-center">
+                    <h2 className="text-4xl font-bold text-gray-700">
+                        Hello Student!
                     </h2>
-                    <p className="mt-2 text-gray-500">
+                    <p className="mt-2  text-gray-400 font-bold text-2xl">
                         Welcome Back
                     </p>
 
-                    <form className="mt-8 space-y-4">
-                        <div>
+                    <form className="mt-8 space-y-4 w-full flex flex-col items-center justify-center">
+                        <div
+                            className='w-full flex flex-col items-center justify-center'
+                        >
                             <input
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 type="email"
-                                className="mt-2 w-full p-2 border border-gray-300 rounded-full pl-4"
+                                className="mt-2 w-3/4 p-2 border border-gray-300 rounded-full pl-4 "
                                 required
                                 placeholder='Email address'
                             />
                         </div>
 
-                        <div>
+                        <div
+                            className='w-full flex flex-col items-center justify-center'
+                        >
                             <input
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 type="password"
-                                className="mt-2 w-full p-2 border border-gray-300 rounded-full pl-4"
+                                className="mt-2 w-3/4 p-2 border border-gray-300 rounded-full pl-4"
                                 required
                                 placeholder='Password'
                             />
@@ -81,9 +87,9 @@ const StudentLogin = () => {
                         <button
                             onClick={hangleLogin}
                             type="submit"
-                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                            className="w-3/4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-2"
                         >
-                            StudentLogin
+                            Student Login
                         </button>
                     </form>
 
