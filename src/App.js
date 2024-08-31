@@ -4,11 +4,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { ProtectedRoute } from 'protected-route-react';
-import Home from './Components/Home';
 import FrontPage from './Components/FrontPage';
 import StudentLogin from './Components/StudentLogin';
 import StudentRegistration from './Components/StudentRegistration';
 import StudentEditProfile from './Components/StudentEditProfile';
+import StudentHomePage from './Components/StudentHomePage';
 
 function App() {
   const { isAuthenticated, error } = useSelector(state => state.user);
@@ -54,7 +54,7 @@ function App() {
 
         <Route exact path="/student-edit-profile" element={
           <ProtectedRoute
-            isAuthenticated={isAuthenticated}
+            isAuthenticated={!isAuthenticated}
             redirect="/student-login"
           >
             <StudentEditProfile />
