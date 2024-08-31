@@ -8,7 +8,7 @@ import Home from './Components/Home';
 import FrontPage from './Components/FrontPage';
 import StudentLogin from './Components/StudentLogin';
 import StudentRegistration from './Components/StudentRegistration';
-import StudentHomePage from './Components/StudentHomePage';
+import StudentEditProfile from './Components/StudentEditProfile';
 
 function App() {
   const { isAuthenticated, error } = useSelector(state => state.user);
@@ -49,6 +49,15 @@ function App() {
             redirect="/home"
           >
             <StudentRegistration />
+          </ProtectedRoute>
+        } />
+
+        <Route exact path="/student-edit-profile" element={
+          <ProtectedRoute
+            isAuthenticated={isAuthenticated}
+            redirect="/student-login"
+          >
+            <StudentEditProfile />
           </ProtectedRoute>} />
 
 
