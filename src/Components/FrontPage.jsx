@@ -35,7 +35,7 @@ const FrontPage = () => {
                     >
                         <Link
                             className='bg-blue-600 w-1/2 text-white  py-3 px-8 rounded-full text-lg mx-2 hover:bg-blue-700 mt-2 text-center'
-                            to="/login">
+                            to="/student-login">
                             <button >
                                 Student
                             </button>
