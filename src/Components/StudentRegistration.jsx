@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../redux/actions/user';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 function StudentRegistration() {
   const dispatch = useDispatch();
@@ -65,7 +66,7 @@ function StudentRegistration() {
         <h1 className="text-white text-3xl md:text-4xl font-bold mb-2">Alumni Connect Student Registration</h1>
         <h4 className="text-white text-lg md:text-xl mb-4">Please fill in all the details accurately to connect with your alumni and seniors</h4>
       </div>
-
+      <Link to="/student-login" className="text-white text-lg  mb-4 hover:underline">Already have an account? <span className='font-bold'>Login here</span> </Link>
       <form onSubmit={handleSubmit} className="w-full max-w-7xl mx-auto p-8 bg-[#f2f2f2] rounded-2xl shadow-lg">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
           <input
