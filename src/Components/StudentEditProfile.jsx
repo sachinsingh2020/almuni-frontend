@@ -1,7 +1,9 @@
-import React from "react";
-import { FaBell, FaUserCircle,FaHome,FaCalendar, FaUserGraduate } from "react-icons/fa";
+import React, { useEffect } from "react";
+import { FaBell, FaUserCircle, FaHome, FaCalendar, FaUserGraduate } from "react-icons/fa";
 
 const StudentEditProfile = () => {
+
+
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
@@ -86,7 +88,7 @@ const StudentEditProfile = () => {
                 <label className="block text-gray-700 mb-2">Contact Number</label>
                 <input
                   type="text"
-                  
+
                   className="w-full p-2 border border-gray-400 rounded-full focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
               </div>

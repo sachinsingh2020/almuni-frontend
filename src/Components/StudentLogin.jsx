@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../redux/actions/user';
 import toast from 'react-hot-toast';
 
@@ -17,6 +17,13 @@ const StudentLogin = () => {
         e.preventDefault();
         await dispatch(login(email, password));
     }
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            hangleLogin(e);
+        }
+    };
+
 
     useEffect(() => {
         if (error) {
@@ -78,6 +85,7 @@ const StudentLogin = () => {
                                 type="password"
                                 className="mt-2 w-3/4 p-2 border border-gray-300 rounded-full pl-4"
                                 required
+                                onKeyPress={handleKeyPress}
                                 placeholder='Password'
                             />
                         </div>

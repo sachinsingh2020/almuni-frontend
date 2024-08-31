@@ -9,6 +9,7 @@ import StudentLogin from './Components/StudentLogin';
 import StudentRegistration from './Components/StudentRegistration';
 import StudentEditProfile from './Components/StudentEditProfile';
 import StudentHomePage from './Components/StudentHomePage';
+import { loadUser } from './redux/actions/user';
 
 function App() {
   const { isAuthenticated, error } = useSelector(state => state.user);
@@ -22,6 +23,10 @@ function App() {
     }
   }, [dispatch, error]);
 
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [])
+
   return (
     <Router>
       <Routes>
@@ -33,7 +38,14 @@ function App() {
             <StudentLogin />
           </ProtectedRoute>} />
 
-        <Route exact path="/" element={<FrontPage />} />
+        <Route exact path="/" element={
+          <ProtectedRoute
+            isAuthenticated={!isAuthenticated}
+            redirect="/home"
+          >
+            <FrontPage />
+          </ProtectedRoute>} />
+
 
         <Route exact path="/home" element={
           <ProtectedRoute
@@ -54,7 +66,7 @@ function App() {
 
         <Route exact path="/student-edit-profile" element={
           <ProtectedRoute
-            isAuthenticated={!isAuthenticated}
+            isAuthenticated={isAuthenticated}
             redirect="/student-login"
           >
             <StudentEditProfile />

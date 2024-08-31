@@ -12,6 +12,9 @@ const logoutFail = createAction('logoutFail');
 const isLoggedInRequest = createAction('isLoggedInRequest');
 const isLoggedInSuccess = createAction('isLoggedInSuccess');
 const isLoggedInFail = createAction('isLoggedInFail');
+const loadUserRequest = createAction('loadUserRequest');
+const loadUserSuccess = createAction('loadUserSuccess');
+const loadUserFail = createAction('loadUserFail');
 const clearError = createAction('clearError');
 const clearMessage = createAction('clearMessage');
 
@@ -66,6 +69,18 @@ export const userReducer = createReducer({}, (builder) => {
             state.user = action.payload.user;
         })
         .addCase(isLoggedInFail, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        })
+        .addCase(loadUserRequest, (state) => {
+            state.loading = true;
+        })
+        .addCase(loadUserSuccess, (state, action) => {
+            state.loading = false;
+            state.isAuthenticated = true;
+            state.user = action.payload;
+        })
+        .addCase(loadUserFail, (state, action) => {
             state.loading = false;
             state.error = action.payload;
         })
