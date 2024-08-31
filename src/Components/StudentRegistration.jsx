@@ -98,7 +98,7 @@ function StudentRegistration() {
           <input
             type="number"
             name="graduationYear"
-            placeholder="Year *"
+            placeholder="Graduation Year *"
             required
             className="border rounded-full bg-white p-4"
             value={formData.graduationYear}
@@ -225,7 +225,7 @@ function StudentRegistration() {
               <img
                 src={preview}
                 alt="Profile Preview"
-                className="w-24 h-24 rounded-full border border-gray-300"
+                className="w-24 h-34 rounded-xl  border border-gray-300"
               />
             </div>
           )}

@@ -37,7 +37,7 @@ function App() {
         <Route exact path="/home" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
-            redirect="/login"
+            redirect="/student-login"
           >
             <Home />
           </ProtectedRoute>} />
@@ -45,7 +45,7 @@ function App() {
         <Route exact path="/student-registration" element={
           <ProtectedRoute
             isAuthenticated={!isAuthenticated}
-            redirect="/login"
+            redirect="/home"
           >
             <StudentRegistration />
           </ProtectedRoute>} />
