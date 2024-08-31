@@ -1,11 +1,9 @@
 import React from 'react'
 
 const AlumniViewProfile = () => {
-    return (
-        <div>
-            <h1>Alumni View Profile</h1>
-        </div>
-    )
+  return (
+    <div>AlumniViewProfile</div>
+  )
 }
 
-export default AlumniViewProfile
+export default AlumniViewProfile;

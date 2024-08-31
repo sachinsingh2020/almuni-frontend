@@ -8,6 +8,7 @@ import Home from './Components/Home';
 import FrontPage from './Components/FrontPage';
 import StudentLogin from './Components/StudentLogin';
 import StudentRegistration from './Components/StudentRegistration';
+import StudentEditProfile from './Components/StudentEditProfile';
 
 function App() {
   const { isAuthenticated, error } = useSelector(state => state.user);
@@ -48,9 +49,8 @@ function App() {
             redirect="/home"
           >
             <StudentRegistration />
+            <StudentEditProfile/>
           </ProtectedRoute>} />
-
-
       </Routes>
       <Toaster />
     </Router>
