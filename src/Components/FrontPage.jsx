@@ -1,14 +1,16 @@
 import React from 'react';
 import MainPageImage from "../assets/MainPageImage.png";
+import FrontPageBackgroundImage from "../assets/FrontPageBackgroundImage.jpg";
 import { Link } from 'react-router-dom';
 
 const FrontPage = () => {
     return (
         <div className="flex h-screen">
             {/* Left Section */}
-            <div className="w-1/2 relative flex justify-center items-center">
+            <div className="w-3/5 relative flex justify-center items-center">
                 <div className="absolute inset-0">
-                    <img src={MainPageImage} alt="Graduation hats" className="h-full w-full object-cover" />
+                    <img src={FrontPageBackgroundImage} alt="Graduation hats"
+                        className="h-full w-full object-cover object-center " />
                 </div>
                 <div className="relative z-10 text-center">
                     <h1 className="text-6xl font-bold mb-2 text-black" style={{ textShadow: "4px 4px 0px white, -4px -4px 0px white, 4px -4px 0px white, -4px 4px 0px white" }}>
@@ -21,7 +23,7 @@ const FrontPage = () => {
             </div>
 
             {/* Right Section */}
-            <div className="w-1/2 bg-white flex flex-col justify-center items-center">
+            <div className="w-2/5 bg-[#f8f6e1] flex flex-col justify-center items-center">
                 <div
                     className='w-full flex flex-col items-center justify-center'
                 >

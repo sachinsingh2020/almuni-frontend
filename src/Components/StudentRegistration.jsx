@@ -45,8 +45,6 @@ function StudentRegistration() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here, e.g., send data to server
-    console.log(formData);
     await dispatch(register(formData));
   };
 
@@ -59,24 +57,17 @@ function StudentRegistration() {
       toast.success(message);
       dispatch({ type: 'clearMessage' });
     }
-  }, [dispatch, error, message])
+  }, [dispatch, error, message]);
 
   return (
-    <div
-      className="bg-blue-700 p-8"
-      style={{
-        minHeight: '100vh',
-      }}
-    >
-      <div className="w-full flex flex-col justify-center items-center">
-        <h1 className="text-white text-center text-4xl font-bold mb-2">Alumni Connect StudentRegistration</h1>
-        <h4 className="text-white text-center text-lg mb-4">
-          Please fill in all the details accurately to connect with your alumni and seniors
-        </h4>
+    <div className="bg-blue-700 p-8 min-h-screen flex flex-col items-center">
+      <div className="w-full text-center mb-4">
+        <h1 className="text-white text-3xl md:text-4xl font-bold mb-2">Alumni Connect Student Registration</h1>
+        <h4 className="text-white text-lg md:text-xl mb-4">Please fill in all the details accurately to connect with your alumni and seniors</h4>
       </div>
 
-      <form onSubmit={handleSubmit} className="max-w-[80vw] mx-auto p-8 bg-[#f2f2f2] rounded-2xl shadow-lg">
-        <div className="grid grid-cols-3 gap-4 mb-4">
+      <form onSubmit={handleSubmit} className="w-full max-w-7xl mx-auto p-8 bg-[#f2f2f2] rounded-2xl shadow-lg">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
           <input
             type="text"
             name="firstName"
@@ -105,7 +96,8 @@ function StudentRegistration() {
             onChange={handleChange}
           />
         </div>
-        <div className="grid grid-cols-2 gap-4 mb-4">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <input
             type="tel"
             name="phoneNumber"
@@ -125,7 +117,8 @@ function StudentRegistration() {
             onChange={handleChange}
           />
         </div>
-        <div className="grid grid-cols-2 gap-4 mb-4">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <select
             name="gender"
             required
@@ -147,6 +140,7 @@ function StudentRegistration() {
             onChange={handleChange}
           />
         </div>
+
         <input
           type="text"
           name="address"
@@ -156,13 +150,14 @@ function StudentRegistration() {
           value={formData.address}
           onChange={handleChange}
         />
-        <div className="grid grid-cols-2 gap-4 mb-4">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <input
             type="text"
             name="rollNumber"
             placeholder="Roll Number *"
             required
-            className="border rounded-full bg-white p-4 "
+            className="border rounded-full bg-white p-4"
             value={formData.rollNumber}
             onChange={handleChange}
           />
@@ -171,18 +166,19 @@ function StudentRegistration() {
             name="dateOfBirth"
             placeholder="Date of Birth *"
             required
-            className="border rounded-full bg-white p-4 "
+            className="border rounded-full bg-white p-4"
             value={formData.dateOfBirth}
             onChange={handleChange}
           />
         </div>
-        <div className="grid grid-cols-2 gap-4 mb-4">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <input
             type="text"
             name="course"
             placeholder="Course"
             required
-            className="border rounded-full bg-white p-4 "
+            className="border rounded-full bg-white p-4"
             value={formData.course}
             onChange={handleChange}
           />
@@ -191,11 +187,12 @@ function StudentRegistration() {
             name="branch"
             placeholder="Branch"
             required
-            className="border rounded-full bg-white p-4 "
+            className="border rounded-full bg-white p-4"
             value={formData.branch}
             onChange={handleChange}
           />
         </div>
+
         <input
           type="password"
           name="password"
@@ -205,7 +202,8 @@ function StudentRegistration() {
           value={formData.password}
           onChange={handleChange}
         />
-        <div className="flex flex-col mb-4 justify-center items-center mt-8">
+
+        <div className="flex flex-col mb-4 items-center mt-8">
           <label
             htmlFor="file"
             className="bg-blue-600 text-white font-bold py-2 px-6 rounded-full cursor-pointer hover:bg-blue-500"
@@ -225,18 +223,16 @@ function StudentRegistration() {
               <img
                 src={preview}
                 alt="Profile Preview"
-                className="w-24 h-34 rounded-xl  border border-gray-300"
+                className="w-24 h-34 rounded-xl border border-gray-300"
               />
             </div>
           )}
         </div>
 
-        <div
-          className='flex justify-center items-center w-full mt-8'
-        >
+        <div className="flex justify-center items-center w-full mt-8">
           <button
             type="submit"
-            className="bg-blue-600 text-white font-bold p-4 rounded-full hover:bg-blue-500 w-1/2  "
+            className="bg-blue-600 text-white font-bold p-4 rounded-full hover:bg-blue-500 w-full md:w-1/2"
           >
             SUBMIT
           </button>
