@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import { FaSearch, FaChevronDown, FaClock } from 'react-icons/fa';
+import { FaSearch, FaChevronDown} from 'react-icons/fa';
+import { FaUserGraduate, FaBriefcase, FaMapMarkerAlt, FaBuilding } from 'react-icons/fa';
+import AlumniCard from './AlumniCard';
+
 
 const JobSearch = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [secondarySearches] = useState([
-    'Batch 2020-2021',
-    'Write your content',
-    'how to choose font',
-    'how to choose color palette'
-  ]);
 
   const [dropdowns, setDropdowns] = useState({
     Graduation: false,
@@ -27,7 +24,7 @@ const JobSearch = () => {
   };
 
   return (
-    <div className= " rounded-lg shadow-m border border-black px-24">
+    <div className= " rounded-lg shadow-m px-24">
         <header className=" mb-4 py-6">
         <div className="max-w-8xl mx-auto py-4 flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-800">Alumni Connect</h1>
@@ -89,14 +86,9 @@ const JobSearch = () => {
           className="w-full p-2 pl-10 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 bg-slate-50"
         />
       </div>
-
-      <div className="bg-white rounded-md shadow p-2">
-        {secondarySearches.map((search, index) => (
-          <div key={index} className="flex items-center text-gray-500 mb-2 last:mb-0">
-            <FaClock className="mr-2 text-sm" />
-            <span>{search}</span>
-          </div>
-        ))}
+      <div className='flex justify-evenly'>
+      <AlumniCard/>
+      <AlumniCard/>
       </div>
     </div>
   );
