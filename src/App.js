@@ -10,6 +10,7 @@ import StudentRegistration from './Components/StudentRegistration';
 import StudentEditProfile from './Components/StudentEditProfile';
 import StudentHomePage from './Components/StudentHomePage';
 import { loadUser } from './redux/actions/user';
+import AlumniViewProfile from './Components/AlumniViewProfile';
 
 function App() {
   const { isAuthenticated, error } = useSelector(state => state.user);

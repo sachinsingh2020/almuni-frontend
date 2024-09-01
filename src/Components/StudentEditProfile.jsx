@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 import { FaBell, FaUserCircle, FaHome, FaCalendar, FaUserGraduate } from "react-icons/fa";
 
 const StudentEditProfile = () => {
