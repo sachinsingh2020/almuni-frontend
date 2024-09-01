@@ -21,6 +21,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { LiaFacebookSquare } from "react-icons/lia";
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -28,9 +29,14 @@ const StudentHomePage = () => {
 
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const logoutHandler = () => {
         dispatch(logout());
+    }
+
+    const goToProfile = () => {
+        navigate('/student-profile');
     }
 
     const { error, message } = useSelector(state => state.user);
@@ -56,7 +62,9 @@ const StudentHomePage = () => {
                     <div className="space-x-[10rem]">
                         <button className="hover:text-gray-200 text-lg">Donate</button>
                         <button className="hover:text-gray-200 text-lg">Job Portal</button>
-                        <button className="hover:text-gray-200 text-lg">Profile</button>
+                        <button
+                            onClick={goToProfile}
+                            className="hover:text-gray-200 text-lg">Profile</button>
                     </div>
                     <button
                         onClick={logoutHandler}
@@ -261,15 +269,9 @@ const StudentHomePage = () => {
                         <div className="flex flex-col items-center">
                             <button className="bg-blue-500 text-white px-4 py-2 mt-4">Enquire →</button>
                             <div className="flex mt-4">
-                                <a href="#" className="text-blue-500 mr-2">
-                                    <i className="fab fa-instagram"></i>
-                                </a>
-                                <a href="#" className="text-blue-500 mr-2">
-                                    <i className="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" className="text-blue-500">
-                                    <i className="fab fa-facebook"></i>
-                                </a>
+                                <FaInstagram className="text-blue-500 hover:text-blue-700 text-3xl mx-1" />
+                                <FaTwitter className="text-blue-500 hover:text-blue-700 text-3xl mx-1" />
+                                <LiaFacebookSquare className="text-blue-500 hover:text-blue-700 text-3xl mx-1" />
                             </div>
                         </div>
                     </div>
