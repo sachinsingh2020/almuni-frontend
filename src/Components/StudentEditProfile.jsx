@@ -9,6 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { loadUser, updateUserDetails, updateUserProfilePic } from "../redux/actions/user";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const StudentEditProfile = () => {
   const { user, error, message } = useSelector((state) => state.user);
@@ -79,9 +80,11 @@ const StudentEditProfile = () => {
           </div>
         </div>
         <div className="space-y-8">
-          <button className="flex items-center justify-center w-full text-white focus:outline-none">
-            <FaHome className="text-2xl" />
-          </button>
+          <Link to="/student-home">
+            <button className="flex items-center justify-center w-full text-white focus:outline-none">
+              <FaHome className="text-2xl" />
+            </button>
+          </Link>
           <button className="flex items-center justify-center w-full text-white focus:outline-none">
             <FaUserCircle className="text-2xl" />
           </button>

@@ -39,6 +39,10 @@ const StudentHomePage = () => {
         navigate('/student-profile');
     }
 
+    const handleSeachForAlumniButton = () => {
+        navigate('/alumni-search');
+    }
+
     const { error, message } = useSelector(state => state.user);
 
     useEffect(() => {
@@ -151,19 +155,13 @@ const StudentHomePage = () => {
 
 
             {/* search Alumni Button  */}
-            <div
-                className='bg-[#212121] py-4 px-8 flex justify-center items-center'
-            >
+            <div className="flex justify-center items-center mt-8">
                 <button
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-2xl px-8 py-3 "
-                    style={{
-                        borderTopLeftRadius: '20px',
-                        borderTopRightRadius: '0px',
-                        borderBottomRightRadius: '20px',
-                        borderBottomLeftRadius: '0px',
-                        border: "8px solid white"
-                    }}
-                >Search For an Alumni</button>
+                    onClick={handleSeachForAlumniButton}
+                    className="bg-blue-600 text-white font-semibold px-4 py-2 rounded-full hover:bg-blue-700"
+                >
+                    Search for Alumni
+                </button>
             </div>
 
             <div className="my-12">
@@ -189,7 +187,7 @@ const StudentHomePage = () => {
                 <div className="text-center text-3xl font-bold mb-8">
                     All Events
                 </div>
-                <div className="w-full h-[70vh] overflow-y-scroll">
+                <div className="w-full h-[70vh] overflow-y-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {AllEvents.map((event, index) => (
                             <EventCard
@@ -202,6 +200,7 @@ const StudentHomePage = () => {
                         ))}
                     </div>
                 </div>
+
             </div>
 
             <div className="mx-auto">

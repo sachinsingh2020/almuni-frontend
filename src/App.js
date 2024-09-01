@@ -12,7 +12,7 @@ import StudentHomePage from './Components/StudentHomePage';
 import { loadUser } from './redux/actions/user';
 import AlumniViewProfile from './Components/AlumniViewProfile';
 import StudentProfile from './Components/StudentProfile';
-import JobSearch from './Components/JobSearch';
+import AlumniSearch from './Components/AlumniSearch';
 
 function App() {
   const { isAuthenticated, error } = useSelector(state => state.user);
@@ -28,7 +28,7 @@ function App() {
 
   useEffect(() => {
     dispatch(loadUser());
-  }, [dispatch])
+  }, [])
 
   return (
     <Router>
@@ -41,7 +41,7 @@ function App() {
             <StudentLogin />
           </ProtectedRoute>} />
 
-        <Route exact path='/jobsearch' element={<JobSearch />} />
+        <Route exact path='/alumni-search' element={<AlumniSearch />} />
         <Route exact path='/' element={<FrontPage />} />
 
         <Route exact path="/student-home" element={
