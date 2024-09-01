@@ -41,7 +41,6 @@ function App() {
             <StudentLogin />
           </ProtectedRoute>} />
 
-        <Route exact path='/alumni-search' element={<AlumniSearch />} />
         <Route exact path='/' element={<FrontPage />} />
 
         <Route exact path="/student-home" element={
@@ -75,6 +74,14 @@ function App() {
             redirect="/student-login"
           >
             <AlumniViewProfile />
+          </ProtectedRoute>} />
+
+        <Route exact path="/alumni-search" element={
+          <ProtectedRoute
+            isAuthenticated={isAuthenticated}
+            redirect="/student-login"
+          >
+            <AlumniSearch />
           </ProtectedRoute>} />
 
         <Route exact path="/student-profile" element={
