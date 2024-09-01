@@ -15,6 +15,12 @@ const isLoggedInFail = createAction('isLoggedInFail');
 const loadUserRequest = createAction('loadUserRequest');
 const loadUserSuccess = createAction('loadUserSuccess');
 const loadUserFail = createAction('loadUserFail');
+const updateUserDetailsRequest = createAction('updateUserDetailsRequest');
+const updateUserDetailsSuccess = createAction('updateUserDetailsSuccess');
+const updateUserDetailsFail = createAction('updateUserDetailsFail');
+const updateUserProfilePicRequest = createAction('updateUserProfilePicRequest');
+const updateUserProfilePicSuccess = createAction('updateUserProfilePicSuccess');
+const updateUserProfilePicFail = createAction('updateUserProfilePicFail');
 const clearError = createAction('clearError');
 const clearMessage = createAction('clearMessage');
 
@@ -81,6 +87,30 @@ export const userReducer = createReducer({}, (builder) => {
             state.user = action.payload;
         })
         .addCase(loadUserFail, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        })
+        .addCase(updateUserDetailsRequest, (state) => {
+            state.loading = true;
+        })
+        .addCase(updateUserDetailsSuccess, (state, action) => {
+            state.loading = false;
+            state.user = action.payload.user;
+            state.message = action.payload.message;
+        })
+        .addCase(updateUserDetailsFail, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        })
+        .addCase(updateUserProfilePicRequest, (state) => {
+            state.loading = true;
+        })
+        .addCase(updateUserProfilePicSuccess, (state, action) => {
+            state.loading = false;
+            state.user = action.payload.user;
+            state.message = action.payload.message;
+        })
+        .addCase(updateUserProfilePicFail, (state, action) => {
             state.loading = false;
             state.error = action.payload;
         })

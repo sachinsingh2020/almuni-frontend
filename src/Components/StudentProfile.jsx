@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Helpers/Navbar';
@@ -8,9 +8,6 @@ const StudentProfile = () => {
     const { user } = useSelector(state => state.user);
     const navigate = useNavigate(); // Hook to handle navigation
 
-    useEffect(() => {
-        console.log({ user });
-    }, []);
 
     const handleEditProfile = () => {
         navigate('/student-edit-profile');
