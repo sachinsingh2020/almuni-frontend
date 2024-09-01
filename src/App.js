@@ -11,6 +11,7 @@ import StudentEditProfile from './Components/StudentEditProfile';
 import StudentHomePage from './Components/StudentHomePage';
 import { loadUser } from './redux/actions/user';
 import AlumniViewProfile from './Components/AlumniViewProfile';
+import JobSearch from './Components/JobSearch';
 
 function App() {
   const { isAuthenticated, error } = useSelector(state => state.user);
@@ -37,6 +38,7 @@ function App() {
             redirect="/home"
           >
             <StudentLogin />
+            <JobSearch/>
           </ProtectedRoute>} />
 
         <Route exact path="/" element={
