@@ -11,7 +11,8 @@ import StudentEditProfile from './Components/StudentEditProfile';
 import StudentHomePage from './Components/StudentHomePage';
 import { loadUser } from './redux/actions/user';
 import AlumniViewProfile from './Components/AlumniViewProfile';
-import JobSearch from './Components/JobSearch';
+import StudentProfile from './Components/StudentProfile';
+import AlumniSearch from './Components/AlumniSearch';
 
 function App() {
   const { isAuthenticated, error } = useSelector(state => state.user);
@@ -35,22 +36,14 @@ function App() {
         <Route exact path="/student-login" element={
           <ProtectedRoute
             isAuthenticated={!isAuthenticated}
-            redirect="/home"
+            redirect="/student-home"
           >
             <StudentLogin />
-            <JobSearch/>
           </ProtectedRoute>} />
 
-        <Route exact path="/" element={
-          <ProtectedRoute
-            isAuthenticated={!isAuthenticated}
-            redirect="/home"
-          >
-            <FrontPage />
-          </ProtectedRoute>} />
+        <Route exact path='/' element={<FrontPage />} />
 
-
-        <Route exact path="/home" element={
+        <Route exact path="/student-home" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
             redirect="/student-login"
@@ -61,7 +54,7 @@ function App() {
         <Route exact path="/student-registration" element={
           <ProtectedRoute
             isAuthenticated={!isAuthenticated}
-            redirect="/home"
+            redirect="/student-home"
           >
             <StudentRegistration />
           </ProtectedRoute>
@@ -75,6 +68,32 @@ function App() {
             <StudentEditProfile />
           </ProtectedRoute>} />
 
+        <Route exact path="/alumni-profile" element={
+          <ProtectedRoute
+            isAuthenticated={isAuthenticated}
+            redirect="/student-login"
+          >
+            <AlumniViewProfile />
+          </ProtectedRoute>} />
+
+        <Route exact path="/alumni-search" element={
+          <ProtectedRoute
+            isAuthenticated={isAuthenticated}
+            redirect="/student-login"
+          >
+            <AlumniSearch />
+          </ProtectedRoute>} />
+
+        <Route exact path="/student-profile" element={
+          <ProtectedRoute
+            isAuthenticated={isAuthenticated}
+            redirect="/student-login"
+          >
+            <StudentProfile />
+          </ProtectedRoute>} />
+
+
+
 
       </Routes>
       <Toaster />
@@ -84,4 +103,3 @@ function App() {
 
 export default App;
 
-// sachin singh

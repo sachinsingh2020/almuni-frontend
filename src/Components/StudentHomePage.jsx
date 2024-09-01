@@ -21,6 +21,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { LiaFacebookSquare } from "react-icons/lia";
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -28,9 +29,18 @@ const StudentHomePage = () => {
 
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const logoutHandler = () => {
         dispatch(logout());
+    }
+
+    const goToProfile = () => {
+        navigate('/student-profile');
+    }
+
+    const handleSeachForAlumniButton = () => {
+        navigate('/alumni-search');
     }
 
     const { error, message } = useSelector(state => state.user);
@@ -56,7 +66,9 @@ const StudentHomePage = () => {
                     <div className="space-x-[10rem]">
                         <button className="hover:text-gray-200 text-lg">Donate</button>
                         <button className="hover:text-gray-200 text-lg">Job Portal</button>
-                        <button className="hover:text-gray-200 text-lg">Profile</button>
+                        <button
+                            onClick={goToProfile}
+                            className="hover:text-gray-200 text-lg">Profile</button>
                     </div>
                     <button
                         onClick={logoutHandler}
@@ -143,19 +155,13 @@ const StudentHomePage = () => {
 
 
             {/* search Alumni Button  */}
-            <div
-                className='bg-[#212121] py-4 px-8 flex justify-center items-center'
-            >
+            <div className="flex justify-center items-center mt-8">
                 <button
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-2xl px-8 py-3 "
-                    style={{
-                        borderTopLeftRadius: '20px',
-                        borderTopRightRadius: '0px',
-                        borderBottomRightRadius: '20px',
-                        borderBottomLeftRadius: '0px',
-                        border: "8px solid white"
-                    }}
-                >Search For an Alumni</button>
+                    onClick={handleSeachForAlumniButton}
+                    className="bg-blue-600 text-white font-semibold px-4 py-2 rounded-full hover:bg-blue-700"
+                >
+                    Search for Alumni
+                </button>
             </div>
 
             <div className="my-12">
@@ -181,7 +187,7 @@ const StudentHomePage = () => {
                 <div className="text-center text-3xl font-bold mb-8">
                     All Events
                 </div>
-                <div className="w-full h-[70vh] overflow-y-scroll">
+                <div className="w-full h-[70vh] overflow-y-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {AllEvents.map((event, index) => (
                             <EventCard
@@ -194,6 +200,7 @@ const StudentHomePage = () => {
                         ))}
                     </div>
                 </div>
+
             </div>
 
             <div className="mx-auto">
@@ -261,15 +268,9 @@ const StudentHomePage = () => {
                         <div className="flex flex-col items-center">
                             <button className="bg-blue-500 text-white px-4 py-2 mt-4">Enquire →</button>
                             <div className="flex mt-4">
-                                <a href="#" className="text-blue-500 mr-2">
-                                    <i className="fab fa-instagram"></i>
-                                </a>
-                                <a href="#" className="text-blue-500 mr-2">
-                                    <i className="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" className="text-blue-500">
-                                    <i className="fab fa-facebook"></i>
-                                </a>
+                                <FaInstagram className="text-blue-500 hover:text-blue-700 text-3xl mx-1" />
+                                <FaTwitter className="text-blue-500 hover:text-blue-700 text-3xl mx-1" />
+                                <LiaFacebookSquare className="text-blue-500 hover:text-blue-700 text-3xl mx-1" />
                             </div>
                         </div>
                     </div>

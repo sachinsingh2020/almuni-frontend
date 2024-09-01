@@ -78,3 +78,46 @@ export const loadUser = () => async dispatch => {
         dispatch({ type: 'loadUserFail', payload: error.response.data.message });
     }
 }
+
+export const updateUserDetails = (formData) => async (dispatch) => {
+    try {
+        dispatch({ type: 'updateUserDetailsRequest' });
+
+        const { data } = await axios.put(`${server}/updateuserdetails`, formData, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            withCredentials: true,
+        });
+
+        console.log({ data });
+
+        dispatch({ type: 'updateUserDetailsSuccess', payload: data });
+    }
+    catch (error) {
+        dispatch({ type: 'updateUserDetailsFail', payload: error.response.data.message });
+    }
+}
+
+export const updateUserProfilePic = (file) => async (dispatch) => {
+    try {
+        console.log({ file });
+        dispatch({ type: 'updateUserDetailsRequest' });
+        const formData = new FormData();
+        formData.append('file', file);
+        console.log({ formData });
+        const { data } = await axios.put(`${server}/updateuserprofilepic`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+            withCredentials: true,
+        });
+
+        console.log({ data });
+
+        dispatch({ type: 'updateUserDetailsSuccess', payload: data });
+    }
+    catch (error) {
+        dispatch({ type: 'updateUserDetailsFail', payload: error.response.data.message });
+    }
+}
