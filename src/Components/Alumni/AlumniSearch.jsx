@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import AlumniCard from '../Helpers/AlumniCard';
+import AlumniCard from '../../Helpers/AlumniCard';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllAlumnis } from '../redux/actions/alumni';
-import Loader from '../Helpers/Loader';
+import { getAllAlumnis } from '../../redux/actions/alumni';
+import Loader from '../../Helpers/Loader';
 import { useLocation } from 'react-router-dom';
-import NotFound from '../Helpers/NotFound';
+import NotFound from '../../Helpers/NotFound';
 import Pagination from 'react-js-pagination';
-import SearchAndFilter from '../Helpers/SearchAndFilter';
+import SearchAndFilter from '../../Helpers/SearchAndFilter';
 
 const AlumniSearch = () => {
   const dispatch = useDispatch();
@@ -85,3 +85,5 @@ const AlumniSearch = () => {
 };
 
 export default AlumniSearch;
+
+// sachin 

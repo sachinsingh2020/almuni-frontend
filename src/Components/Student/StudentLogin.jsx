@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { login } from '../redux/actions/user';
+import { login } from '../../redux/actions/user';
 import toast from 'react-hot-toast';
 
+// ashish
 const StudentLogin = () => {
 
     const [email, setEmail] = useState('');

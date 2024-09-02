@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const SearchAndFilter = () => {
     const navigate = useNavigate();
@@ -60,18 +61,8 @@ const SearchAndFilter = () => {
 
     return (
         <div>
-            <header className="mb-4 py-6">
-                <div className="max-w-8xl mx-auto py-4 flex justify-between items-center">
-                    <h1 className="text-3xl font-bold text-gray-800">Alumni Connect</h1>
-                    <nav className="space-x-12">
-                        <a href="#" className="text-gray-900 font-semibold">Donate</a>
-                        <a href="#" className="text-gray-900 font-semibold">Job Portal</a>
-                        <a href="#" className="text-gray-900 font-semibold">Profile</a>
-                        <button className="bg-gradient-to-tr from-blue-700 to-blue-900 text-white px-4 py-1 rounded">Logout</button>
-                    </nav>
-                </div>
-            </header>
 
+            <Navbar />
             <div className="relative mb-4">
                 <input
                     type="text"
@@ -81,7 +72,7 @@ const SearchAndFilter = () => {
                     onChange={(e) => setKeyword(e.target.value)}
                     onKeyPress={handleKeyPress}
                 />
-                <button className="absolute right-0 top-0 bottom-0 px-14 bg-gradient-to-tr from-blue-700 to-blue-900 text-white rounded-full hover:bg-blue-600 transition-colors">
+                <button className="absolute right-0 top-0 bottom-0 px-14 bg-gradient-to-tr from-blue-700 to-blue-900 text-white rounded-lg hover:bg-blue-600 transition-colors">
                     Search
                 </button>
             </div>
