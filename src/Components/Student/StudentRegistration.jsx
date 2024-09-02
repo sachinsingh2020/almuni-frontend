@@ -25,7 +25,7 @@ function StudentRegistration() {
     branch: "",
     password: '',
   });
-
+  // sachin 
   const [preview, setPreview] = useState(null);
 
   const handleChange = (e) => {
