@@ -1,7 +1,7 @@
 import React, { } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../Helpers/Navbar';
+import Navbar from '../../Helpers/Navbar';
 import { FaLinkedinIn, FaPhone, FaEnvelope, FaCalendarAlt, FaGraduationCap, FaMapMarkerAlt } from 'react-icons/fa';
 
 const StudentProfile = () => {

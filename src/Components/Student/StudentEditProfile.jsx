@@ -7,7 +7,7 @@ import {
   FaUserGraduate,
 } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { loadUser, updateUserDetails, updateUserProfilePic } from "../redux/actions/user";
+import { loadUser, updateUserDetails, updateUserProfilePic } from "../../redux/actions/user";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 

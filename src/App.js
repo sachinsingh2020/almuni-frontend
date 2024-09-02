@@ -5,14 +5,14 @@ import { useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { ProtectedRoute } from 'protected-route-react';
 import FrontPage from './Components/FrontPage';
-import StudentLogin from './Components/StudentLogin';
-import StudentRegistration from './Components/StudentRegistration';
-import StudentEditProfile from './Components/StudentEditProfile';
-import StudentHomePage from './Components/StudentHomePage';
+import StudentLogin from './Components/Student/StudentLogin';
+import StudentRegistration from './Components/Student/StudentRegistration';
+import StudentEditProfile from './Components/Student/StudentEditProfile';
+import StudentHomePage from './Components/Student/StudentHomePage';
 import { loadUser } from './redux/actions/user';
-import AlumniViewProfile from './Components/AlumniViewProfile';
-import StudentProfile from './Components/StudentProfile';
-import AlumniSearch from './Components/AlumniSearch';
+import AlumniViewProfile from './Components/Alumni/AlumniViewProfile';
+import StudentProfile from './Components/Student/StudentProfile';
+import AlumniSearch from './Components/Alumni/AlumniSearch';
 
 function App() {
   const { isAuthenticated, error } = useSelector(state => state.user);
