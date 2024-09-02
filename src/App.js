@@ -84,12 +84,28 @@ function App() {
             <AlumniSearch />
           </ProtectedRoute>} />
 
+        <Route exact path="/alumni-search/:keyword" element={
+          <ProtectedRoute
+            isAuthenticated={isAuthenticated}
+            redirect="/student-login"
+          >
+            <AlumniSearch />
+          </ProtectedRoute>} />
+
         <Route exact path="/student-profile" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
             redirect="/student-login"
           >
             <StudentProfile />
+          </ProtectedRoute>} />
+
+        <Route exact path="/alumni-profile/:id" element={
+          <ProtectedRoute
+            isAuthenticated={isAuthenticated}
+            redirect="/student-login"
+          >
+            <AlumniViewProfile />
           </ProtectedRoute>} />
 
 

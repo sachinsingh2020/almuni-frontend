@@ -45,6 +45,7 @@ const StudentHomePage = () => {
 
     const { error, message } = useSelector(state => state.user);
 
+
     useEffect(() => {
         if (error) {
             toast.error(error);
@@ -155,10 +156,16 @@ const StudentHomePage = () => {
 
 
             {/* search Alumni Button  */}
-            <div className="flex justify-center items-center mt-8">
+            <div className="flex justify-center items-center  bg-black py-8">
                 <button
                     onClick={handleSeachForAlumniButton}
-                    className="bg-blue-600 text-white font-semibold px-4 py-2 rounded-full hover:bg-blue-700"
+                    className="bg-blue-600 text-white font-bold px-8 py-4  hover:bg-blue-700 text-5xl"
+                    style={{
+                        borderTopLeftRadius: '00px',
+                        borderTopRightRadius: '20px',
+                        borderBottomRightRadius: '00px',
+                        borderBottomLeftRadius: '20px',
+                    }}
                 >
                     Search for Alumni
                 </button>
