@@ -42,9 +42,13 @@ const FrontPage = () => {
                             </button>
                         </Link>
 
-                        <button className="bg-blue-600 w-1/2 text-white py-3 px-8 rounded-full text-lg mx-2 hover:bg-blue-700 mt-4">
-                            Alumni
-                        </button>
+                        <Link
+                            className='bg-blue-600 w-1/2 text-white py-3 px-8 rounded-full text-lg mx-2 hover:bg-blue-700 mt-4 text-center'
+                            to="/alumni-login">
+                            <button >
+                                Alumni
+                            </button>
+                        </Link>
                     </div>
                 </div>
 

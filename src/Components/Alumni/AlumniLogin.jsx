@@ -3,20 +3,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { login } from '../../redux/actions/user';
 import toast from 'react-hot-toast';
+import { alumniLogin } from '../../redux/actions/alumni';
 
 // ashish
-const StudentLogin = () => {
+const AlumniLogin = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const dispatch = useDispatch();
 
-    const { message, error, loading } = useSelector(state => state.user);
+    const { message, alumniError, loading } = useSelector(state => state.alumni);
 
     const hangleLogin = async (e) => {
         e.preventDefault();
-        await dispatch(login(email, password));
+        await dispatch(alumniLogin(email, password));
     }
 
     const handleKeyPress = (e) => {
@@ -27,15 +28,15 @@ const StudentLogin = () => {
 
 
     useEffect(() => {
-        if (error) {
-            toast.error(error);
+        if (alumniError) {
+            toast.error(alumniError);
             dispatch({ type: 'clearError' });
         }
         if (message) {
             toast.success(message);
             dispatch({ type: 'clearMessage' });
         }
-    }, [dispatch, error, message])
+    }, [dispatch, alumniError, message])
 
 
     return (
@@ -57,7 +58,7 @@ const StudentLogin = () => {
                 {/* Right Section */}
                 <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-center items-center h-4/6 md:h-full">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-700">
-                        Hello Student!
+                        Hello Alumni!
                     </h2>
                     <p className="mt-2  text-gray-400 font-bold text-2xl">
                         Welcome Back
@@ -98,7 +99,7 @@ const StudentLogin = () => {
                             type="submit"
                             className="w-3/4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-2"
                         >
-                            Student Login
+                            Alumni Login
                         </button>
                     </form>
 
@@ -107,10 +108,10 @@ const StudentLogin = () => {
                             <button
                                 className='text-gray-400'
                             >
-                                Not a Student ? Alumni /
+                                Not a Alumni ? Student /
                             </button>
                         </Link>
-                        <Link to="/student-registration" >
+                        <Link to="/alumni-registration" >
                             <button className="text-blue-600 hover:underline" >
                                 New User? Register
                             </button>
@@ -126,4 +127,4 @@ const StudentLogin = () => {
     );
 };
 
-export default StudentLogin;
+export default AlumniLogin;
