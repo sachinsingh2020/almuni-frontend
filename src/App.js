@@ -17,6 +17,7 @@ import AlumniLogin from './Components/Alumni/AlumniLogin';
 import AlumniRegistration from './Components/Alumni/AlumniRegistration';
 import AlumniHomePage from './Components/Alumni/AlumniHomePage';
 import { loadAlumniDetails } from './redux/actions/alumni';
+import AlumniJobPost from './Components/Alumni/AlumniJobPost';
 
 function App() {
 
@@ -102,12 +103,22 @@ function App() {
           </ProtectedRoute>
         } />
 
+        {/* student edit profile route  */}
         <Route exact path="/student-edit-profile" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
             redirect="/student-login"
           >
             <StudentEditProfile />
+          </ProtectedRoute>} />
+
+        {/* Alumni post a job route  */}
+        <Route exact path="/job-post" element={
+          <ProtectedRoute
+            isAuthenticated={isAlumniAuthenticated}
+            redirect="/alumni-login"
+          >
+            <AlumniJobPost />
           </ProtectedRoute>} />
 
         <Route exact path="/alumni-profile" element={
