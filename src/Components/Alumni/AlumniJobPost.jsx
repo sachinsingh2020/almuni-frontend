@@ -4,10 +4,10 @@ import Navbar from '../../Helpers/Navbar';
 const AlumniJobPost = () => {
   return (
     <div>
-        <div>
-            <Navbar/>
-        </div>
-        
+      <div>
+        <Navbar />
+      </div>
+
       <h2 className="text-3xl font-bold text-center mb-8">Job Posting</h2>
 
       <form className='px-28 space-y-4'>

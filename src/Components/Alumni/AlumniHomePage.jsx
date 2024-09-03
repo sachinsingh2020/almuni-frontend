@@ -37,7 +37,7 @@ const AlumniHomePage = () => {
     }
 
     const goToProfile = () => {
-        navigate('/student-profile');
+        navigate('/my-alumni-profile');
     }
 
     const handlePostJobButton = () => {
@@ -68,10 +68,11 @@ const AlumniHomePage = () => {
                     <div className="space-x-[10rem]">
                         {/* <button className="hover:text-gray-200 text-lg">Donate</button> */}
                         <Link to="/alumni-home" className="hover:text-gray-200 text-lg">Home</Link>
-                        <button className="hover:text-gray-200 text-lg">Job Portal</button>
+                        <Link to="/job-portal" className="hover:text-gray-200 text-lg">Job Portal</Link>
                         <button
                             onClick={goToProfile}
                             className="hover:text-gray-200 text-lg">Profile</button>
+                        <Link to="/job-post" className="hover:text-gray-200 text-lg">Post a Job</Link>
                     </div>
                     <button
                         onClick={logoutHandler}
