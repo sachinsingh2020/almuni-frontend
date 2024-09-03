@@ -61,7 +61,6 @@ const SearchAndFilter = () => {
 
     return (
         <div>
-
             <Navbar />
             <div className="relative mb-4">
                 <input

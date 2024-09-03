@@ -13,9 +13,15 @@ import { loadUser } from './redux/actions/user';
 import AlumniViewProfile from './Components/Alumni/AlumniViewProfile';
 import StudentProfile from './Components/Student/StudentProfile';
 import AlumniSearch from './Components/Alumni/AlumniSearch';
+import AlumniLogin from './Components/Alumni/AlumniLogin';
+import AlumniRegistration from './Components/Alumni/AlumniRegistration';
+import AlumniHomePage from './Components/Alumni/AlumniHomePage';
+import { loadAlumniDetails } from './redux/actions/alumni';
 
 function App() {
+
   const { isAuthenticated, error } = useSelector(state => state.user);
+  const { isAlumniAuthenticated, alumniError } = useSelector(state => state.alumni);
 
   const dispatch = useDispatch();
 
@@ -24,15 +30,21 @@ function App() {
       toast.error(error);
       dispatch({ type: 'clearError' });
     }
-  }, [dispatch, error]);
+    if (alumniError) {
+      toast.error(alumniError);
+      dispatch({ type: 'clearError' });
+    }
+  }, [dispatch, error, alumniError]);
 
   useEffect(() => {
     dispatch(loadUser());
-  }, [])
+    dispatch(loadAlumniDetails());
+  }, [dispatch])
 
   return (
     <Router>
       <Routes>
+        {/* student login route  */}
         <Route exact path="/student-login" element={
           <ProtectedRoute
             isAuthenticated={!isAuthenticated}
@@ -41,8 +53,18 @@ function App() {
             <StudentLogin />
           </ProtectedRoute>} />
 
+        {/* alumni login route  */}
+        <Route exact path="/alumni-login" element={
+          <ProtectedRoute
+            isAuthenticated={!isAlumniAuthenticated}
+            redirect="/alumni-home"
+          >
+            <AlumniLogin />
+          </ProtectedRoute>} />
+
         <Route exact path='/' element={<FrontPage />} />
 
+        {/* student home route  */}
         <Route exact path="/student-home" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
@@ -51,12 +73,32 @@ function App() {
             <StudentHomePage />
           </ProtectedRoute>} />
 
+        {/* alumni home route  */}
+        <Route exact path="/alumni-home" element={
+          <ProtectedRoute
+            isAuthenticated={isAlumniAuthenticated}
+            redirect="/alumni-login"
+          >
+            <AlumniHomePage />
+          </ProtectedRoute>} />
+
+        {/* student registration route  */}
         <Route exact path="/student-registration" element={
           <ProtectedRoute
             isAuthenticated={!isAuthenticated}
             redirect="/student-home"
           >
             <StudentRegistration />
+          </ProtectedRoute>
+        } />
+
+        {/* alumni registration  */}
+        <Route exact path="/alumni-registration" element={
+          <ProtectedRoute
+            isAuthenticated={!isAlumniAuthenticated}
+            redirect="/alumni-home"
+          >
+            <AlumniRegistration />
           </ProtectedRoute>
         } />
 
