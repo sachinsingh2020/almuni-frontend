@@ -40,8 +40,8 @@ const AlumniHomePage = () => {
         navigate('/student-profile');
     }
 
-    const handleSeachForAlumniButton = () => {
-        navigate('/alumni-search');
+    const handlePostJobButton = () => {
+        navigate('/job-post');
     }
 
     const { alumniError, message } = useSelector(state => state.alumni);
@@ -160,7 +160,7 @@ const AlumniHomePage = () => {
             {/* search Alumni Button  */}
             <div className="flex justify-center items-center  bg-black py-8">
                 <button
-                    onClick={handleSeachForAlumniButton}
+                    onClick={handlePostJobButton}
                     className="bg-blue-600 text-white font-bold px-8 py-4  hover:bg-blue-700 text-5xl"
                     style={{
                         borderTopLeftRadius: '00px',
@@ -169,7 +169,7 @@ const AlumniHomePage = () => {
                         borderBottomLeftRadius: '20px',
                     }}
                 >
-                    Search for Alumni
+                    Post a Job
                 </button>
             </div>
 
