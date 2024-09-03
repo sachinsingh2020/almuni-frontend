@@ -35,7 +35,12 @@ const AlumniNavbar = () => {
                     <Link to="/alumni-home" className="text-gray-900 font-semibold">
                         Home
                     </Link>
-                    <a href="#" className="text-gray-900 font-semibold">Job Portal</a>
+                    <Link to="/job-portal" className="text-gray-900 font-semibold">
+                        Job Portal
+                    </Link>
+                    <Link to="/job-post" className="text-gray-900 font-semibold">
+                        Job Post
+                    </Link>
                     <Link to="/my-alumni-profile" className="text-gray-900 font-semibold">
                         Profile
                     </Link>
