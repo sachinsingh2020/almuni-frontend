@@ -22,7 +22,6 @@ const AlumniSearch = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    console.log({ keyword, graduationYear, industry, fieldOfStudy });
     dispatch(getAllAlumnis(keyword, currentPage, graduationYear, industry, fieldOfStudy));
   }, [dispatch, keyword, currentPage, graduationYear, industry, fieldOfStudy]);
 

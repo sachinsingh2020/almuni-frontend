@@ -123,6 +123,7 @@ function App() {
             <AlumniJobPost />
           </ProtectedRoute>} />
 
+        {/* alumni view profile  */}
         <Route exact path="/alumni-profile" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
@@ -131,6 +132,7 @@ function App() {
             <AlumniViewProfile />
           </ProtectedRoute>} />
 
+        {/* student alumni search  */}
         <Route exact path="/alumni-search" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
@@ -139,6 +141,7 @@ function App() {
             <AlumniSearch />
           </ProtectedRoute>} />
 
+        {/* student alumni  search by keyword    */}
         <Route exact path="/alumni-search/:keyword" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
@@ -147,6 +150,7 @@ function App() {
             <AlumniSearch />
           </ProtectedRoute>} />
 
+        {/* student profile route  */}
         <Route exact path="/student-profile" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
@@ -175,6 +179,15 @@ function App() {
 
         {/* job portal page */}
         <Route exact path="/job-portal" element={
+          <ProtectedRoute
+            isAuthenticated={isAlumniAuthenticated || isAuthenticated}
+            redirect="/"
+          >
+            <JobPortal />
+          </ProtectedRoute>} />
+
+        {/* job portal page by keyword  */}
+        <Route exact path="/job-portal/:keyword" element={
           <ProtectedRoute
             isAuthenticated={isAlumniAuthenticated || isAuthenticated}
             redirect="/"
