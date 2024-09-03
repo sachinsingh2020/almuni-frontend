@@ -18,6 +18,8 @@ import AlumniRegistration from './Components/Alumni/AlumniRegistration';
 import AlumniHomePage from './Components/Alumni/AlumniHomePage';
 import { loadAlumniDetails } from './redux/actions/alumni';
 import AlumniJobPost from './Components/Alumni/AlumniJobPost';
+import AlumniMyProfile from './Components/Alumni/AlumniMyProfile';
+import JobPortal from './Components/JobPortal/JobPortal';
 
 function App() {
 
@@ -153,12 +155,31 @@ function App() {
             <StudentProfile />
           </ProtectedRoute>} />
 
+        {/* alumni profile by id route  */}
         <Route exact path="/alumni-profile/:id" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
             redirect="/student-login"
           >
             <AlumniViewProfile />
+          </ProtectedRoute>} />
+
+        {/* alumni my profile route  */}
+        <Route exact path="/my-alumni-profile" element={
+          <ProtectedRoute
+            isAuthenticated={isAlumniAuthenticated}
+            redirect="/alumni-login"
+          >
+            <AlumniMyProfile />
+          </ProtectedRoute>} />
+
+        {/* job portal page */}
+        <Route exact path="/job-portal" element={
+          <ProtectedRoute
+            isAuthenticated={isAlumniAuthenticated || isAuthenticated}
+            redirect="/"
+          >
+            <JobPortal />
           </ProtectedRoute>} />
 
 

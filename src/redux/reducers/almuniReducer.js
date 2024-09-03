@@ -101,7 +101,7 @@ export const alumniReducer = createReducer({}, (builder) => {
         .addCase(loadAlumniDetailsSuccess, (state, action) => {
             state.loading = false;
             state.isAlumniAuthenticated = true;
-            state.alumniUser = action.payload;
+            state.alumniUser = action.payload.alumni;
         })
         .addCase(loadAlumniDetailsFail, (state, action) => {
             state.loading = false;
