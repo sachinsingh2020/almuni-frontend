@@ -84,6 +84,8 @@ export const updateUserDetails = (formData) => async (dispatch) => {
     try {
         dispatch({ type: 'updateUserDetailsRequest' });
 
+        const link = `${server}/updateuserdetails`
+        console.log({ link });
         const { data } = await axios.put(`${server}/updateuserdetails`, formData, {
             headers: {
                 'Content-Type': 'application/json',

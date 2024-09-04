@@ -18,7 +18,8 @@ import AlumniRegistration from './Components/Alumni/AlumniRegistration';
 import AlumniHomePage from './Components/Alumni/AlumniHomePage';
 import { loadAlumniDetails } from './redux/actions/alumni';
 import AlumniJobPost from './Components/Alumni/AlumniJobPost';
-import JobDetailsPage from './Components/Alumni/JobDetailsPage';
+import AlumniMyProfile from './Components/Alumni/AlumniMyProfile';
+import JobPortal from './Components/JobPortal/JobPortal';
 
 function App() {
 
@@ -122,8 +123,7 @@ function App() {
             <AlumniJobPost />
           </ProtectedRoute>} />
 
-          <Route exact path='/job-details' element={<JobDetailsPage />} />
-
+        {/* alumni view profile  */}
         <Route exact path="/alumni-profile" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
@@ -132,6 +132,7 @@ function App() {
             <AlumniViewProfile />
           </ProtectedRoute>} />
 
+        {/* student alumni search  */}
         <Route exact path="/alumni-search" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
@@ -140,6 +141,7 @@ function App() {
             <AlumniSearch />
           </ProtectedRoute>} />
 
+        {/* student alumni  search by keyword    */}
         <Route exact path="/alumni-search/:keyword" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
@@ -148,6 +150,7 @@ function App() {
             <AlumniSearch />
           </ProtectedRoute>} />
 
+        {/* student profile route  */}
         <Route exact path="/student-profile" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
@@ -156,12 +159,40 @@ function App() {
             <StudentProfile />
           </ProtectedRoute>} />
 
+        {/* alumni profile by id route  */}
         <Route exact path="/alumni-profile/:id" element={
           <ProtectedRoute
             isAuthenticated={isAuthenticated}
             redirect="/student-login"
           >
             <AlumniViewProfile />
+          </ProtectedRoute>} />
+
+        {/* alumni my profile route  */}
+        <Route exact path="/my-alumni-profile" element={
+          <ProtectedRoute
+            isAuthenticated={isAlumniAuthenticated}
+            redirect="/alumni-login"
+          >
+            <AlumniMyProfile />
+          </ProtectedRoute>} />
+
+        {/* job portal page */}
+        <Route exact path="/job-portal" element={
+          <ProtectedRoute
+            isAuthenticated={isAlumniAuthenticated || isAuthenticated}
+            redirect="/"
+          >
+            <JobPortal />
+          </ProtectedRoute>} />
+
+        {/* job portal page by keyword  */}
+        <Route exact path="/job-portal/:keyword" element={
+          <ProtectedRoute
+            isAuthenticated={isAlumniAuthenticated || isAuthenticated}
+            redirect="/"
+          >
+            <JobPortal />
           </ProtectedRoute>} />
 
 
@@ -174,4 +205,3 @@ function App() {
 }
 
 export default App;
-
