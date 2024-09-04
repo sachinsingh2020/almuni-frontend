@@ -1,9 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const JobCard = ({ job }) => {
 
+    const navigate = useNavigate();
+
     const handleJobClicked = () => {
-        console.log({ job });
+        navigate(`/job-details/${job._id}`);
     }
     return (
         job &&

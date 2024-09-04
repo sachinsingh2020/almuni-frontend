@@ -20,6 +20,7 @@ import { loadAlumniDetails } from './redux/actions/alumni';
 import AlumniJobPost from './Components/Alumni/AlumniJobPost';
 import AlumniMyProfile from './Components/Alumni/AlumniMyProfile';
 import JobPortal from './Components/JobPortal/JobPortal';
+import JobDetails from './Components/JobPortal/JobDetails';
 
 function App() {
 
@@ -193,6 +194,15 @@ function App() {
             redirect="/"
           >
             <JobPortal />
+          </ProtectedRoute>} />
+
+        {/* job details  */}
+        <Route exact path="/job-details/:id" element={
+          <ProtectedRoute
+            isAuthenticated={isAlumniAuthenticated || isAuthenticated}
+            redirect="/"
+          >
+            <JobDetails />
           </ProtectedRoute>} />
 
 
