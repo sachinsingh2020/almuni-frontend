@@ -9,7 +9,8 @@ export const register = (formData) => async (dispatch) => {
         const { data } = await axios.post(`${server}/register`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
-            }
+            },
+            withCredentials: true,
         });
 
         console.log({ data });
@@ -24,6 +25,7 @@ export const login = (email, password) => async (dispatch) => {
     try {
         dispatch({ type: 'loginRequest' });
 
+        console.log({ server });
         const { data } = await axios.post(`${server}/login`, { email, password }, {
             headers: {
                 'Content-Type': 'application/json',

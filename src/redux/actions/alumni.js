@@ -10,7 +10,8 @@ export const alumniRegister = (formData) => async (dispatch) => {
         const { data } = await axios.post(`${server}/alumniregister`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
-            }
+            },
+            withCredentials: true,
         });
 
         console.log({ data });
