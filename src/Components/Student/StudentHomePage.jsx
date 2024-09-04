@@ -21,7 +21,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { LiaFacebookSquare } from "react-icons/lia";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // ashish 
 
@@ -66,8 +66,17 @@ const StudentHomePage = () => {
                 <nav className="flex justify-between items-center px-8 py-4 h-[4rem]">
                     <div className="text-2xl font-bold">Alumni Connect</div>
                     <div className="space-x-[10rem]">
-                        <button className="hover:text-gray-200 text-lg">Donate</button>
-                        <button className="hover:text-gray-200 text-lg">Job Portal</button>
+                        {/* <button className="hover:text-gray-200 text-lg">Donate</button> */}
+                        <Link to="/student-home" className="hover:text-gray-200 text-lg" >
+                            Home
+                        </Link>
+
+                        <Link to="/alumni-search" className="hover:text-gray-200 text-lg" >
+                            Find Alumni
+                        </Link>
+                        <Link to="/job-portal" >
+                            Job Portal
+                        </Link>
                         <button
                             onClick={goToProfile}
                             className="hover:text-gray-200 text-lg">Profile</button>
