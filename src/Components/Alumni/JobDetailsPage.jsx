@@ -56,7 +56,7 @@ const JobDetailsPage = () => {
         <p>10 candidates hired</p>
       </div>
 
-      <button className="w-full mt-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">
+      <button className="w-full mt-8 py-3 bg-gradient-to-tr from-blue-700 to-blue-900 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">
         Continue
       </button>
     </div>
