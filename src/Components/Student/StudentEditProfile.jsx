@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from "react";
-import {
-  FaBell,
-  FaUserCircle,
-  FaHome,
-  FaCalendar,
-  FaUserGraduate,
-} from "react-icons/fa";
+import { FaBell, FaUserCircle, FaHome, FaCalendar, FaUserGraduate } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { loadUser, updateUserDetails, updateUserProfilePic } from "../../redux/actions/user";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { ClipLoader } from "react-spinners";  // Importing the spinner
 
-// sachin 
 const StudentEditProfile = () => {
-  const { user, error, message } = useSelector((state) => state.user);
+  const { user, error, message, loading } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 
@@ -133,9 +127,9 @@ const StudentEditProfile = () => {
 
           {preview && <div
             onClick={handleProfilePicUpdate}
-            className="bg-blue-600 text-white mt-3  font-bold py-2 px-6 rounded-full cursor-pointer hover:bg-blue-500"
+            className="bg-blue-600 text-white mt-3 font-bold py-2 px-6 rounded-full cursor-pointer hover:bg-blue-500"
           >
-            Upload Profile Picture
+            {loading ? <ClipLoader size={20} color={"#fff"} /> : "Upload Profile Picture"}
           </div>
           }
         </div>
@@ -182,9 +176,7 @@ const StudentEditProfile = () => {
 
               {/* Phone Number */}
               <div>
-                <label className="block text-gray-700 mb-2">
-                  Contact Number
-                </label>
+                <label className="block text-gray-700 mb-2">Contact Number</label>
                 <input
                   type="tel"
                   className="w-full p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -208,9 +200,7 @@ const StudentEditProfile = () => {
 
               {/* Graduation Year */}
               <div>
-                <label className="block text-gray-700 mb-2">
-                  Graduation Year
-                </label>
+                <label className="block text-gray-700 mb-2">Graduation Year</label>
                 <input
                   type="number"
                   className="w-full p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -258,23 +248,25 @@ const StudentEditProfile = () => {
 
               {/* Linkedin */}
               <div>
-                <label className="block text-gray-700 mb-2">LinkedIn</label>
+                <label className="block text-gray-700 mb-2">LinkedIn Profile</label>
                 <input
-                  type="url"
+                  type="text"
                   className="w-full p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={linkedin}
                   onChange={(e) => setLinkedin(e.target.value)}
-                  required
                 />
               </div>
             </div>
 
-            <button
-              type="submit"
-              className="mt-6 bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-500 transition duration-200 ease-in-out"
-            >
-              Save Changes
-            </button>
+            <div className="flex justify-center mt-8">
+              <button
+                type="submit"
+                className={`bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-500 focus:outline-none ${loading ? 'opacity-75 cursor-not-allowed' : ''}`}
+                disabled={loading}
+              >
+                {loading ? <ClipLoader size={20} color={"#fff"} /> : "Save Changes"}
+              </button>
+            </div>
           </form>
         </div>
       </div>
