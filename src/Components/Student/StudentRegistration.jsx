@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Select from 'react-select';
 import { register } from '../../redux/actions/user';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
@@ -25,13 +26,19 @@ function StudentRegistration() {
     branch: "",
     password: '',
   });
-  // sachin 
   const [preview, setPreview] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSelectChange = (selectedOption, actionMeta) => {
+    setFormData({
+      ...formData,
+      [actionMeta.name]: selectedOption ? selectedOption.value : '',
     });
   };
 
@@ -60,6 +67,57 @@ function StudentRegistration() {
     }
   }, [dispatch, error, message]);
 
+  // Graduation Year Options from current year to 2030
+  const currentYear = new Date().getFullYear();
+  const graduationYearOptions = Array.from({ length: 2031 - currentYear }, (_, i) => ({
+    value: currentYear + i,
+    label: (currentYear + i).toString(),
+  }));
+
+  // Course Options
+  const courseOptions = [
+    { value: 'Integrated Btech-Mtech', label: 'Integrated Btech-Mtech' },
+    { value: 'Btech', label: 'Btech' },
+    { value: 'Mtech', label: 'Mtech' },
+    { value: 'Bsc', label: 'Bsc' },
+    { value: 'Bca', label: 'Bca' },
+    { value: 'Mca', label: 'Mca' },
+    // Add more courses as needed
+  ];
+
+  // Branch Options
+  const branchOptions = [
+    { value: 'AI', label: 'AI' },
+    { value: 'Data Science', label: 'Data Science' },
+    { value: 'Computer Science', label: 'Computer Science' },
+    { value: 'Pharmacology', label: 'Pharmacology' },
+    // Add more branches as needed
+  ];
+
+  // Custom styles for react-select
+  const customStyles = {
+    control: (provided) => ({
+      ...provided,
+      borderRadius: '9999px', // Full rounded border
+      border: 'none', // Remove the default border
+      boxShadow: 'none', // Remove the default box shadow
+      padding: '0.5rem', // Padding to match the input fields
+      backgroundColor: 'white', // Ensure the background color matches the input fields
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isSelected ? '#3b82f6' : 'white', // Change the background color of selected option
+      color: state.isSelected ? 'white' : 'black', // Change the text color of selected option
+    }),
+    dropdownIndicator: (provided) => ({
+      ...provided,
+      color: '#3b82f6', // Change the color of the dropdown indicator
+    }),
+    indicatorSeparator: () => ({
+      display: 'none', // Remove the separator line between the indicator and the control
+    }),
+  };
+
   return (
     <div className="bg-blue-700 p-8 min-h-screen flex flex-col items-center">
       <div className="w-full text-center mb-4">
@@ -87,14 +145,14 @@ function StudentRegistration() {
             value={formData.lastName}
             onChange={handleChange}
           />
-          <input
-            type="number"
+          <Select
             name="graduationYear"
             placeholder="Graduation Year *"
+            options={graduationYearOptions}
+            value={graduationYearOptions.find(option => option.value === formData.graduationYear)}
+            onChange={handleSelectChange}
+            styles={customStyles} // Apply custom styles here
             required
-            className="border rounded-full bg-white p-4"
-            value={formData.graduationYear}
-            onChange={handleChange}
           />
         </div>
 
@@ -174,23 +232,23 @@ function StudentRegistration() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <input
-            type="text"
+          <Select
             name="course"
-            placeholder="Course"
+            placeholder="Course *"
+            options={courseOptions}
+            value={courseOptions.find(option => option.value === formData.course)}
+            onChange={handleSelectChange}
+            styles={customStyles} // Apply custom styles here
             required
-            className="border rounded-full bg-white p-4"
-            value={formData.course}
-            onChange={handleChange}
           />
-          <input
-            type="text"
+          <Select
             name="branch"
-            placeholder="Branch"
+            placeholder="Branch *"
+            options={branchOptions}
+            value={branchOptions.find(option => option.value === formData.branch)}
+            onChange={handleSelectChange}
+            styles={customStyles} // Apply custom styles here
             required
-            className="border rounded-full bg-white p-4"
-            value={formData.branch}
-            onChange={handleChange}
           />
         </div>
 
@@ -204,40 +262,18 @@ function StudentRegistration() {
           onChange={handleChange}
         />
 
-        <div className="flex flex-col mb-4 items-center mt-8">
-          <label
-            htmlFor="file"
-            className="bg-blue-600 text-white font-bold py-2 px-6 rounded-full cursor-pointer hover:bg-blue-500"
-          >
-            Upload Profile Picture
-          </label>
+        <div className="mb-4">
           <input
             type="file"
-            id="file"
             name="file"
-            accept=".jpg,.jpeg,.png"
-            className="hidden"
+            required
+            className="border rounded-full bg-white p-4 mb-4 w-full"
             onChange={handleFileChange}
           />
-          {preview && (
-            <div className="mt-4">
-              <img
-                src={preview}
-                alt="Profile Preview"
-                className="w-24 h-34 rounded-xl border border-gray-300"
-              />
-            </div>
-          )}
+          {preview && <img src={preview} alt="Preview" className="w-40 h-40 object-cover rounded-full" />}
         </div>
 
-        <div className="flex justify-center items-center w-full mt-8">
-          <button
-            type="submit"
-            className="bg-blue-600 text-white font-bold p-4 rounded-full hover:bg-blue-500 w-full md:w-1/2"
-          >
-            SUBMIT
-          </button>
-        </div>
+        <button type="submit" className="bg-blue-600 text-white py-3 px-6 rounded-full hover:bg-blue-700 transition-colors duration-300">Register</button>
       </form>
     </div>
   );
